@@ -1,0 +1,24 @@
+<form (ngSubmit)="search()" [formGroup]="searchForm" class="form-inline justify-content-md-center mb-5">
+    <div class="input-group mr-sm-2">
+        <div class="input-group-prepend">
+            <div class="input-group-text">
+                <svg class="bi bi-search" fill="currentColor" height="16" viewBox="0 0 16 16" width="16"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                </svg>
+            </div>
+        </div>
+        <input class="form-control mr-sm-2" formControlName="query" id="query" placeholder="Jane Doe" type="text">
+    </div>
+    <button class="btn btn-light" type="submit">Search</button>
+</form>
+
+<ul class="list-group mt-4" *ngFor="let page of searchResult.pages">
+    <li class="list-group-item">
+        <p class="card-text mb-0">{{page.url}}</p>
+        <a href="{{page.url}}" class="card-title h5">{{page.title}}</a>
+        <ul class="list-group" *ngFor="let paragraph of page.paragraphs">
+            <p class="card-text mt-3"[innerHTML]="paragraph"></p>
+        </ul>
+    </li>
+</ul>
