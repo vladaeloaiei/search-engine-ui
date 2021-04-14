@@ -3,6 +3,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SearchService} from '../_services/search.service';
 import {SearchResult} from '../_models/search-result';
 import {FormControl, FormGroup} from '@angular/forms';
+import {first} from 'rxjs/operators';
 
 @Component({templateUrl: 'home.component.html'})
 export class HomeComponent implements OnInit, OnDestroy {
@@ -22,39 +23,19 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     public search() {
-        this.searchResult = this.dummy();
-        this.preprocessParagraphs();
-        // this.searchService.submitQuery(this.searchForm.value.query)
-        //     .pipe(first())
-        //     .subscribe(searchResults => this.searchResults = searchResults);
-    }
-
-    private dummy(): SearchResult {
-        return {
-            words: ['paragraph'],
-            pages: [{
-                url: 'http://dummy1.com',
-                title: 'dummy1 title',
-                paragraphs: [
-                    'Un paragraph',
-                    'Alt paragraph'
-                ]
-            }, {
-                url: 'http://dummy2.com',
-                title: 'dummy2 title',
-                paragraphs: [
-                    'Doi Un paragraph',
-                    'Doi Alt paragraph'
-                ]
-            }]
-        };
+        this.searchService.submitQuery(this.searchForm.value.query)
+            .pipe(first())
+            .subscribe(searchResult => {
+                this.searchResult = searchResult;
+                this.preprocessParagraphs();
+            });
     }
 
     private preprocessParagraphs() {
         for (const word of this.searchResult.words) {
             for (const page of this.searchResult.pages) {
                 for (let i = 0; i < page.paragraphs.length; ++i) {
-                    page.paragraphs[i] = page.paragraphs[i].replace(word, '<b>' + word + '</b>');
+                    page.paragraphs[i] = page.paragraphs[i].replace(new RegExp(word, 'gi'), '<b>$&</b>');
                 }
             }
         }

@@ -11,7 +11,7 @@ export class SearchService {
     }
 
     submitQuery(query: string) {
-        return this.http.get<SearchResult[]>(AppComponent.searchUrl,
+        return this.http.get<SearchResult>(AppComponent.searchUrl,
             {
                 params: {
                     query
