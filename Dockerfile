@@ -7,4 +7,4 @@ RUN npm ci && npm run build
 # stage 2
 FROM nginx:alpine
 COPY --from=build-step /app/dist/search-engine-ui /usr/share/nginx/html
-EXPOSE 4200
+EXPOSE 80

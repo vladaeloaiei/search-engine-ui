@@ -5,8 +5,8 @@ import {SearchResult} from '../_models/search-result';
 import {FormControl, FormGroup} from '@angular/forms';
 import {first} from 'rxjs/operators';
 
-@Component({templateUrl: 'home.component.html'})
-export class HomeComponent implements OnInit, OnDestroy {
+@Component({templateUrl: 'search.component.html'})
+export class SearchComponent implements OnInit, OnDestroy {
     public searchResult: SearchResult;
 
     searchForm = new FormGroup({
@@ -14,6 +14,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
 
     constructor(private searchService: SearchService) {
+        this.searchResult = {words: [], pages: []};
     }
 
     ngOnInit() {

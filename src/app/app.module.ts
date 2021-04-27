@@ -8,7 +8,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {AppRoutingModule} from './app.routing';
 import {AppComponent} from './app.component';
-import {HomeComponent} from './home/home.component';
+import {CategoriesComponent} from './categories/categories.component';
+import {SearchComponent} from './search/search.component';
 
 @NgModule({
     imports: [
@@ -23,7 +24,8 @@ import {HomeComponent} from './home/home.component';
     ],
     declarations: [
         AppComponent,
-        HomeComponent,
+        SearchComponent,
+        CategoriesComponent,
     ],
     providers: [],
     bootstrap: [

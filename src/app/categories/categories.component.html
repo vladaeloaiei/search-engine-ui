@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-4">
+        <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#{{category.name}}"
+               *ngFor="let category of categories; let i = index" [class.active]="0 === i"
+               id="category-name-{{category.name}}" role="tab" aria-controls="home">
+                {{category.name}}
+            </a>
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active " role="tabpanel" aria-labelledby="list-home-list"
+                 *ngFor="let category of categories; let i = index" [class.active]="0 === i" [class.show]="0 === i"
+                 id="{{category.name}}">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item mb-3" *ngFor="let url of category.pages">
+                        <p class="card-text">{{url.url}}</p>
+                        <a href="{{url.url}}" class="card-title h5">{{url.title}}</a>
+                        <ul class="list-group">
+                            <p class="card-text mt-3" [innerHTML]="url.intro"></p>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

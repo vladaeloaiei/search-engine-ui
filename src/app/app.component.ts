@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
 })
 export class AppComponent {
     public static searchUrl = 'http://localhost:10001/search';
+    public static categoryUrl = 'http://localhost:10001/detailedcategory';
 
     constructor(
         private router: Router,

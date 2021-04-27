@@ -1,11 +1,13 @@
 import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from './home/home.component';
+import {CategoriesComponent} from './categories/categories.component';
+import {SearchComponent} from './search/search.component';
 
 const routes: Routes = [
-    {path: '', component: HomeComponent},
+    {path: 'search', component: SearchComponent},
+    {path: 'categories', component: CategoriesComponent},
 
     // otherwise redirect to home
-    {path: '**', redirectTo: ''}
+    {path: '**', redirectTo: 'search'}
 ];
 
 export const AppRoutingModule = RouterModule.forRoot(routes, {relativeLinkResolution: 'legacy'});

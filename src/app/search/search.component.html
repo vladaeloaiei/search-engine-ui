@@ -8,13 +8,13 @@
                 </svg>
             </div>
         </div>
-        <input class="form-control mr-sm-2" formControlName="query" id="query" placeholder="Jane Doe" type="text">
+        <input class="form-control mr-sm-2" formControlName="query" id="query" placeholder="Search" type="text">
     </div>
     <button class="btn btn-light" type="submit">Search</button>
 </form>
 
-<ul class="list-group mt-4" *ngFor="let page of searchResult.pages">
-    <li class="list-group-item">
+<ul class="list-group mt-4">
+    <li class="list-group-item mb-3"  *ngFor="let page of searchResult.pages">
         <p class="card-text mb-0">{{page.url}}</p>
         <a href="{{page.url}}" class="card-title h5">{{page.title}}</a>
         <ul class="list-group" *ngFor="let paragraph of page.paragraphs">
