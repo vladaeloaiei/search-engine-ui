@@ -1,8 +1,12 @@
 export class SearchResult {
-    words: string[];
-    pages: {
-        url: string;
-        title: string;
-        paragraphs: string[];
-    }[];
+    result: {
+        words: string[];
+        pages: {
+            url: string;
+            title: string;
+            paragraphs: string[];
+        }[];
+    };
+    slice: number;
+    slices: number;
 }

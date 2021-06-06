@@ -6,11 +6,11 @@ import {Router} from '@angular/router';
     templateUrl: 'app.component.html'
 })
 export class AppComponent {
-    public static searchUrl = 'http://localhost:10001/search';
+    public static searchUrl = 'http://localhost:10001/search/slice';
     public static categoryUrl = 'http://localhost:10001/detailedcategory';
 
     constructor(
-        private router: Router,
+        public router: Router,
     ) {
     }
 }

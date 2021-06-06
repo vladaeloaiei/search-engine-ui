@@ -10,11 +10,12 @@ export class SearchService {
                 private sanitizer: DomSanitizer) {
     }
 
-    submitQuery(query: string) {
+    submitQuery(query: string, slice: number) {
         return this.http.get<SearchResult>(AppComponent.searchUrl,
             {
                 params: {
-                    query
+                    query,
+                    slice: slice.toString()
                 }
             }
         );

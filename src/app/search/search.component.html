@@ -14,11 +14,32 @@
 </form>
 
 <ul class="list-group mt-4">
-    <li class="list-group-item mb-3"  *ngFor="let page of searchResult.pages">
+    <li class="list-group-item mb-3" *ngFor="let page of searchResult.result.pages">
         <p class="card-text mb-0">{{page.url}}</p>
         <a href="{{page.url}}" class="card-title h5">{{page.title}}</a>
         <ul class="list-group" *ngFor="let paragraph of page.paragraphs">
-            <p class="card-text mt-3"[innerHTML]="paragraph"></p>
+            <p class="card-text mt-3" [innerHTML]="paragraph"></p>
         </ul>
     </li>
 </ul>
+
+<div *ngIf="defaultText !== ''">
+    <p>
+        {{defaultText}}
+    </p>
+</div>
+
+<nav aria-label="Page navigation example" *ngIf="searchResult.slices > 0">
+    <ul class="pagination">
+        <li class="page-item">
+            <button class="page-link" (click)="onChangePage(pageNumber - 1)">Previous</button>
+        </li>
+        <li class="page-item" *ngFor="let slice of counter(searchResult.slices) let i = index"
+            [class.active]="pageNumber === i" [class.show]="pageNumber === i" id="{{i}}">
+            <button class="page-link" (click)="onChangePage(i)">{{i + 1}}</button>
+        </li>
+        <li class=" page-item">
+            <button class="page-link" (click)="onChangePage(pageNumber + 1)">Next</button>
+        </li>
+    </ul>
+</nav>

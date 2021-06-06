@@ -1,8 +1,10 @@
 <!-- nav -->
 <nav class="navbar navbar-expand navbar-dark bg-dark">
     <div class="navbar-nav">
-        <a class="nav-item nav-link" routerLink="/search">Search engine</a>
-        <a class="nav-item nav-link" routerLink="/categories">Categories</a>
+        <a class="nav-item nav-link" routerLink="/search"
+           [class.active]="router.url === '/search'" [class.show]="router.url === '/search'">Search engine </a>
+        <a class="nav-item nav-link" routerLink="/categories"
+           [class.active]="router.url === '/categories'" [class.show]="router.url === '/categories'">Categories </a>
     </div>
 </nav>
 
